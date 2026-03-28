@@ -17,7 +17,9 @@ The v9 firmware in [co2-Ventilation-ESP-v9/co2-Ventilation-ESP-v9.ino](co2-Venti
 3. Control an external Shelly RGBW2 Gen1 light over HTTP so CO2 levels are visible from a distance.
 4. Store configuration in ESP32 non-volatile storage so settings survive reboots and can be changed without recompiling.
 
-## How It Works
+---
+
+# How It Works
 
 At boot, the firmware loads default values from the secrets header and then applies any saved overrides from ESP32 Preferences (NVS). It starts the SCD30 before Wi-Fi, configures altitude compensation, and optionally initializes a BME280 for additional environmental data. 
 
@@ -81,8 +83,15 @@ For public repositories, use the template file as the example configuration and 
 
 Copy and edit the Arduino_secrets.h.example file. Once the correct Wifi details has been entered save it as Arduino_secrets.h
 
+---
 
 # PCB
 The Arduino ESP32 Pico Kit D4 board on this Git Account has a board that can easily be used to connect a sensor and OLED display.
 
 A Shelly RGBW can drive a colour LED strip for effect.
+
+
+---
+# To Do:
+- Link results with Grafana for central monitoring
+- Consider Motorised Action to open/close ventilation?
