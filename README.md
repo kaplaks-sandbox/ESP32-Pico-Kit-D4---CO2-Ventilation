@@ -37,7 +37,7 @@ Administrative routes are protected with HTTP Basic Auth and can optionally be r
 
 ## arduino_secrets - Template Variables
 
-The file [co2-Ventilation-ESP-v9/arduino_secrets - Template.h](co2-Ventilation-ESP-v9/arduino_secrets.h.example) contains the compile-time default configuration. These values are used on first boot and whenever no saved override exists in NVS.
+The file [co2-Ventilation-ESP-v9/arduino_secrets.h.example](co2-Ventilation-ESP-v9/arduino_secrets.h.example) contains the compile-time default configuration. These values are used on first boot and whenever no saved override exists in NVS.
 
 `SECRET_SSID`
 Default Wi-Fi network name used by the ESP32 to connect to the local network.
