@@ -95,3 +95,4 @@ A Shelly RGBW can drive a colour LED strip for effect.
 # To Do:
 - Link results with Grafana for central monitoring
 - Consider Motorised Action to open/close ventilation?
+- Prevent OLED Screen burnin? Touch or PIR
