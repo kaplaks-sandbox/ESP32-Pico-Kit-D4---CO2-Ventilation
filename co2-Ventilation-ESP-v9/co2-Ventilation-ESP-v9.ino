@@ -99,7 +99,7 @@
 #include <SensirionI2cScd30.h>
 //#include <sensirion_common.h>
 
-
+//https://github.com/finitespace/BME280
 #include <BME280I2C.h>
 #include <EnvironmentCalculations.h>
 
@@ -115,7 +115,9 @@
 #endif
 
 // -------- Async Web Server --------
+//https://github.com/ESP32Async/AsyncTCP
 #include <AsyncTCP.h>
+//https://github.com/ESP32Async/ESPAsyncWebServer
 #include <ESPAsyncWebServer.h>
 
 // -----------------------------
@@ -178,7 +180,7 @@ float barometerAltitude = SECRET_BAROMETERAltitude_m; // meters
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET_PIN 33
-#define SCREEN_ADDRESS 0x3D   //Sensor 1 to 3 = 3D, Sensor 4 = 3C
+#define SCREEN_ADDRESS 0x78   //Sensor 1 to 3 = 3D, Sensor 4 = 77
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET_PIN);
 
 // -----------------------------
