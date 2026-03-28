@@ -1,0 +1,22 @@
+OLED display
+IPs too long
+Boot Menu - after that resolving IP shows too quick
+
+
+
+Simplify FRC -
+On one page, explain process
+
+Add back buttons at top of pages.
+Add CO reading and swatch on front page
+Explain Report A T H C
+
+Explain LAN Guard Only
+Explain FRX Pending
+
+Temp offset?
+Add Barometer if found
+
+
+
+Prototype Box #3 hangs - OLED weird
