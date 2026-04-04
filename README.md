@@ -1,16 +1,27 @@
-# ESP32 Pico Kit D4 CO2 Ventilation
+# ESP32 Pico Kit D4 - CO2 Ventilation
 
-This project is an ESP32-based indoor air quality and ventilation indicator built around a Sensirion SCD30 CO2 sensor. The firmware reads CO2, temperature, and humidity, shows the live values on an OLED display, and drives a Shelly RGBW2 light so the room status can be understood at a glance. 
-
-In version 9, the device also exposes a built-in web interface for sensor status, LED diagnostics, system configuration, and SCD30 calibration.
+This project is an ESP32-based indoor air quality and ventilation indicator built around a Sensirion SCD30 CO2 sensor. 
+The unit reads CO2, temperature, and humidity. If there is a BME280 sensor installed it reads this and Altitude from the BME sensor.
+It shows the live values on an OLED display, and drives a Shelly RGBW2 connected to a LED strip light so the room status can be understood at a glance. 
 
 The main goal of the project is to make poor air quality visible early enough that a room can be ventilated before CO2 levels become uncomfortable or unhealthy. Instead of relying only on raw numbers, the firmware converts the measured CO2 concentration into an RGB color state. 
 Low CO2 stays green, rising CO2 moves through yellow and orange, and high CO2 becomes red. 
 This makes the device useful in offices, meeting rooms, classrooms, bedrooms, or any enclosed space where fresh air management matters.
 
-## Firmware Purpose
 
-The v9 firmware in [co2-Ventilation-ESP-v9/co2-Ventilation-ESP-v9.ino](co2-Ventilation-ESP-v9/co2-Ventilation-ESP-v9.ino) is designed to do four jobs:
+The unit also runs a built-in web interface for sensor status, LED diagnostics, system configuration, and SCD30 calibration.
+The sensor values are logged to a SD card - if installed.
+Configured values, like IP, LED IP, Hostnames etc can be stored in the ESP32 non-volatile storage (NVS) and to a file on the SD card.
+Saved values can also be read and applied back into NVS.
+
+The OLED screensaver will activate after a configurable time. One of the GPIO pins is configured as a touch interface. If the OLED display is oo, touch the pad connected to this pin and the OLED turns on again for a configurable time.
+
+The sensor log interval can be set. Log files are rotated every Hour, Day or Month. With the last x files kept to save space on the SD card.
+
+
+## Firmware
+
+The v10 firmware in [co2-Ventilation-ESP-v10/co2-Ventilation-ESP-v10.ino](co2-Ventilation-ESP-v9/co2-Ventilation-ESP-v10.ino) is designed to do four jobs:
 
 1. Measure indoor air quality with the SCD30 sensor.
 2. Present the data locally on the OLED and over a browser-based status interface.
@@ -27,7 +38,7 @@ Once the network is up, the device starts mDNS support, configures NTP time sync
 
 During runtime, the sketch reads CO2 values on a fixed interval, filters the measurements with an exponential moving average, and optionally applies hysteresis to avoid rapid LED color flicker. The processed CO2 value is then mapped to RGB output and sent to the Shelly controller. In parallel, the web UI provides separate pages for sensor values, LED/Shelly diagnostics, and protected system configuration.
 
-Version 9 also adds SCD30 calibration management. The web interface can:
+From Version 9 there is also SCD30 calibration management. The web interface can:
 
 - enable or disable ASC (Auto Self-Calibration)
 - store a pending FRC (Forced Recalibration) target in ppm
@@ -39,7 +50,7 @@ Administrative routes are protected with HTTP Basic Auth and can optionally be r
 
 ## arduino_secrets - Template Variables
 
-The file [co2-Ventilation-ESP-v9/arduino_secrets.h.example](co2-Ventilation-ESP-v9/arduino_secrets.h.example) contains the compile-time default configuration. These values are used on first boot and whenever no saved override exists in NVS.
+The file [co2-Ventilation-ESP-v10/arduino_secrets.h.example](co2-Ventilation-ESP-v10/arduino_secrets.h.example) contains the compile-time default configuration. These values are used on first boot and whenever no saved override exists in NVS.
 
 `SECRET_SSID`
 Default Wi-Fi network name used by the ESP32 to connect to the local network.
@@ -93,6 +104,5 @@ A Shelly RGBW can drive a colour LED strip for effect.
 
 ---
 # To Do:
-- Link results with Grafana for central monitoring
+- Link results with Grafana for central monitoring, Perhaps a RPi collecting stats from the stored SD card logs, consollidating and presenting Stats, Graphs 
 - Consider Motorised Action to open/close ventilation?
-- Prevent OLED Screen burnin? Touch or PIR

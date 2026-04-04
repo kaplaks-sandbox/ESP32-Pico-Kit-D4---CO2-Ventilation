@@ -1,0 +1,16 @@
+OLED display:
+IPs too long
+Boot Menu - after that resolving IP shows too quick
+
+Web GUI:
+Add back buttons at top of pages.
+Sensor Calibration - Simplify FRC - On one page, explain process
+Add CO reading and swatch on front page
+Explain Report A T H C
+Explain LAN Guard Only
+Add Temp offset?
+Explain FRX Pending
+
+To Do:
+Add 2nd Shelly to open/close ventilation?
+Add Raspberry Pi server to collect and prep stats for Graphs, like Grafana

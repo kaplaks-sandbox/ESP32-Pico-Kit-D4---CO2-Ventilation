@@ -1,0 +1,15 @@
+CSV columns:
+Hostname
+timestamp
+epoch
+millis
+co2_ppm
+scd30_temp_c
+scd30_rh_pct
+bmx_temp_c
+bmx_rh_pct
+pressure_hpa
+altitude_m
+display_temp_c
+display_rh_pct
+ambient_sensor

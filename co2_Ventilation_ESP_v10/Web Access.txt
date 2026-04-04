@@ -1,0 +1,21 @@
+The default web config username is:
+
+Username: admin
+
+The password is:
+
+Password: auth_pass from NVS, if one has been saved
+otherwise it falls back to the Wi-Fi password (cfg.pass)
+
+So in practice, on a fresh setup, the web config password is usually your configured Wi-Fi password.
+
+From your sketch logic:
+
+user is hardcoded as admin
+if auth_pass is empty, it does:
+cfg.auth_pass = cfg.pass;
+
+That means unless you explicitly set a separate web admin password, the login is:
+
+admin
+your Wi-Fi password
